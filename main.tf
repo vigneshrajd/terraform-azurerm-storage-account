@@ -76,6 +76,13 @@ resource "azurerm_storage_account" "sa" {
     virtual_network_subnet_ids = values(var.service_endpoints)
     bypass                     = var.traffic_bypass
   }
+
+  timeouts {
+    create = "30m"
+    read   = "5m"
+    update = "30m"
+    delete = "30m"
+  }
 }
 ## azure reference https://docs.microsoft.com/en-us/azure/storage/common/infrastructure-encryption-enable?tabs=portal
 resource "azurerm_storage_encryption_scope" "scope" {
